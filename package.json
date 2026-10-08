@@ -20,7 +20,7 @@
     "playwright": "1.62.1"
   },
   "dependencies": {
-    "werserk-presentation": "file:vendor/werserk-presentation/werserk-presentation-0.1.0.tgz"
+    "werserk-presentation": "file:vendor/werserk-presentation/werserk-presentation-0.1.1.tgz"
   },
   "type": "module"
 }
