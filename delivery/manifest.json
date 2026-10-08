@@ -1,8 +1,8 @@
 {
   "archive": "presentation-offline.tar.gz",
-  "sha256": "4bc858bcb02c19498b5670ea0cedd54bbbe9d8fa7d471ab2d5beaa0563fac008",
+  "sha256": "7d6253fb164edd046ec69e525ec4c250db110d3012d1a1d84a461079af983ea0",
   "build": {
-    "buildId": "c8994b296bd84007fd10",
+    "buildId": "d2027a4b52d5815d5f47",
     "assets": [
       "1f77d1650acc35b1.css",
       "a84e32ccb6abf96b.woff2",
@@ -36,6 +36,6 @@
       "15a",
       "17a"
     ],
-    "toolkitCommit": "94a6349e5007ecc1e3763f6d274674ef9349c60f"
+    "toolkitCommit": "40bac4cc99430935fbce35ddceef4608071fe743"
   }
 }
