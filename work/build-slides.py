@@ -33,7 +33,7 @@ values = {
     'EXAMPLE_SUBSTITUTION': escape(calculation) + '<br>= ' + escape(subtotals),
     'EXAMPLE_RESULT': number(score),
     'EXAMPLE_CHANGE': f"g<sub>1B</sub>: {changed['g']} → {changed_g}. PGS: {number(score)} → <strong class=\"accent\">{number(changed_score)}</strong>.",
-    'EXAMPLE_NOTE': escape('Вклад каждого SNP равен весу, умноженному на число копий выбранного аллеля. Подставляем: '+calculation+' = '+number(score)+'. При дополнительной копии у B получаем '+number(changed_score)+'.'),
+    'EXAMPLE_NOTE': escape('Вклад каждого SNP равен весу, умноженному на число копий выбранного аллеля. Подставляем: '+calculation+' = '+number(score)+'.'),
 }
 reported = json.loads((ROOT/'work/presentation-source-data.json').read_text(), parse_float=Decimal)
 purcell = reported['purcell_2009']

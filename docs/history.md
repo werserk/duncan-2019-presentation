@@ -172,3 +172,8 @@ Userquestionpending: sampleversusancestrygroupvocabulary. Existingtermsarepreser
 
 
 Owner subsequently chose «выборка» for specificcomparison and «группа происхождения» for aggregatedAFR/SAS/EASresults. Appliedto6/7speechanddiagram andGLOSSARY. Preliminary reviewedtreef46e33ee52b569b62a0946aebd6d0b0621c90574 verdictkeptdistinct; finalcandidate reviewedseparately afterchoice. Userrequestnowhasnounresolvedterminologychoice; PRstillnotmerged.
+
+
+2026-10-08: локальная переработка слайдов 7 и 9 по утверждённым правилам речи: смысл pseudo-R² перед нормировкой, краткая интерпретация статистического результата, детали в резерве; см. NARRATIVE-7-9.md.
+
+2026-10-08: минорный проход по 1–10 и примеру 3a; подробности в NARRATIVE-POLISH.md. 1/7/9 сохранены относительно одобренного preview, основные правки — речь и дублирование пояснений.
