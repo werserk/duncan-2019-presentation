@@ -42,3 +42,11 @@
 ## Полишинг PR №2
 
 [Ревью PR2](PR2-CONSISTENCY-REVIEW.md) фиксирует пять направлений. Новые пояснения одинакового назначения используют `--slide-text`, подписи панелей — `--slide-caption`; все кнопки рисунков используют `.figure-open`, включая кнопки вне figcaption. Специальная типографика формулы/чисел остаётся отдельной. Термины E/Q/p_T объясняются в месте появления, а не отдельным вводным блоком. Исходные данные, код просмотра и первые страницы в этом проходе не меняются.
+
+## Reveal migration (feat/reveal-viewer)
+
+Authoring stays in work/slides/slides.html and slides.css. data-step and data-note-step/data-reserve explicitly link reveal groups and speech. work/prepare-slides.py resolves both canonical JSON inputs using Decimal into ignored .generated/slides.html. Shared werserk-presentation CLI compiles to ignored dist; no runtime source is copied into editable project files. presentation.config.json defines input/output and font licence inclusion. The consumer package-lock fixes its toolkit dependency.
+
+Dev is loopback HTTP; dist/index.html is audience, presenter.html the separate console, reader.html full reading, speaker-notes.md complete speech including reserve. Export/pack are shared CLI commands. Scientific preservation check work/check-reveal.cjs compares text to the reviewed content checkpoint b5bb420 and verifies current canonical numeric outputs; runtime behavior is tested in toolkit. Legacy outputs/build-slides.py remain historical reference, excluded from the active npm build route. They do not carry new metadata-driven playback.
+
+Rationale: use native Reveal fragments/state and external toolkit, preserve compositions and scientific computation, explicitly route optional3a without counting it. No central decks collection. The active content branch was not overwritten: migration branch must be reconciled with any later content changes before authoring handoff. See REVEAL-MIGRATION.md for source identity, evidence and actual delivery boundaries.

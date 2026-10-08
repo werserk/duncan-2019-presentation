@@ -1,0 +1,8 @@
+{
+  "id": "duncan-2019",
+  "input": ".generated/slides.html",
+  "out": "dist",
+  "licences": [
+    "vendor/coal-theme/fonts/OFL.txt"
+  ]
+}

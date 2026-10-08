@@ -4,3 +4,12 @@ __pycache__/
 checks/
 *.pyc
 work/slides-check-v4/
+
+# Reveal-derived products
+.generated/
+dist/
+*-offline.tar.gz
+
+.presentation-build-*/
+.presentation-package-*/
+*.presentation-output.json
