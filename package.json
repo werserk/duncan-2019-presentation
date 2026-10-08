@@ -3,11 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "python3 work/build-slides.py",
-    "check": "node work/check-slides.cjs",
-    "check:consistency": "node work/check-consistency.cjs"
+    "build": "npm run prepare:slides && werserk-presentation build",
+    "check": "werserk-presentation check --browser && node work/check-reveal.cjs",
+    "prepare:slides": "python3 work/prepare-slides.py",
+    "dev": "npm run prepare:slides && werserk-presentation dev",
+    "export": "werserk-presentation export",
+    "pack": "werserk-presentation pack",
+    "check:legacy": "node work/check-slides.cjs",
+    "check:consistency:legacy": "node work/check-consistency.cjs",
+    "check:migration": "node work/check-reveal.cjs --migration",
+    "deliver": "python3 work/deliver.py",
+    "check:playback": "node work/check-playback.cjs"
   },
   "devDependencies": {
+    "cheerio": "1.2.0",
     "playwright": "1.62.1"
-  }
+  },
+  "dependencies": {
+    "werserk-presentation": "file:vendor/werserk-presentation/werserk-presentation-0.1.0.tgz"
+  },
+  "type": "module"
 }

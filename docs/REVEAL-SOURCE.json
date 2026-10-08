@@ -1,0 +1,12 @@
+{
+  "commit": "ab1a119e9b60bc4810f156563d59ffe60f788ccf",
+  "core": 21,
+  "optional": [
+    "3a",
+    "12a",
+    "12b",
+    "15a",
+    "17a"
+  ],
+  "toolkitCommit": "94a6349e5007ecc1e3763f6d274674ef9349c60f"
+}
