@@ -1,0 +1,11 @@
+{
+  "source": "Duncan et al. (2019), Results Fig. 2 and Methods Part 1",
+  "matched_publications": 26,
+  "purcell_2009": {
+    "african_variance_explained": 0.004,
+    "european_variance_explained": 0.032
+  },
+  "median_relative_metrics_percent": {"AFR": 42, "SAS": 60, "EAS": 95},
+  "african_reported_test": {"t": -5.97, "df": 24, "p": 0.0000037},
+  "limits": "Medians pool heterogeneous normalized metrics. Exact t-test inputs and implementation are not published in inspected materials."
+}

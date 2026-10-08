@@ -27,9 +27,13 @@
   const observer = new MutationObserver(refresh);
   pages.forEach(page => observer.observe(page,{attributes:true,attributeFilter:['class']}));
   refresh();
-  const dialog = document.querySelector('#figure-dialog');
   document.querySelectorAll('.figure-open').forEach(trigger => {
+    const id = trigger.dataset.figure || 'figure-dialog';
+    const dialog = document.getElementById(id);
+    if (!(dialog instanceof HTMLDialogElement)) throw new Error(`Unknown figure dialog: ${id}`);
     trigger.addEventListener('click', () => dialog.showModal());
   });
-  document.querySelector('#figure-close').addEventListener('click', () => dialog.close());
+  document.querySelectorAll('#figure-close, .figure-close').forEach(button => {
+    button.addEventListener('click', () => button.closest('dialog').close());
+  });
 })();

@@ -147,3 +147,33 @@ python3 work/build-slides.py exit0:689522bytes; notesMDrebuilt. Existingcheck-sl
 User authorized five-direction minor review plus separate repository for parallel branches. Created private werserk/duncan-2019-presentation, baseline exact renderedbytes preserved. Canonical source/build now live in this repository, priorworkspace remains recoverable. Shared style roles and accepted glossary are documented in ARCHITECTURE/GLOSSARY; findings/tests in CONSISTENCY-REVIEW, not duplicated here. User explicitly selected only «полигенная оценка» and primary «качество предсказания», superseding earlier speaker vocabulary. Baseline independent CHANGE reviewedtree88f355d27e536379a2ac735968e6e722ac5a0ed3 PASS, remote/localbaselinecabb2944b4703d68881878301dbd800f391d18b0. Original authorlocalcommit7983fd1 preserved in refs/archive/local-import; GitHubpublication changed commitmetadata but reviewedtreeidentical, remoteobject reconstructed from exactmetadata and SHA verified beforelocalrefs aligned.
 
 Newwork on polish/consistency. No reveals/newslides/publichosting. Scope/style/terminology changes and findings kept in dedicatedreviewdoc. Existingfivecore+optional6physical printpages preserved. Runtime tests outputignoredchecks/, reproduction usesrelativevendoredresources and pinnedPython/npmdependencies. Packagebootstrap/userchosenprivate visibility verified through GitHubnativeUI and connectorreadback. Gh authstatus timedout8s withnooutput; no credentialsread, connectorpublicationused. Initialrootobject reconstruction omittedGPGterminalnewline and failed hash beforemutation; exactsignature/newline reconstruction succeeded. JSONfetch assumedContentsAPIreturnedJSON; connectoractuallyreturnedfiletext, corrected withoutpublicationeffect. Sourceexportchunkedlosslessly withtotalbytecount, remoteGit treeSHA validates fullfiletransport.
+
+
+## Слайды 6–10 — 2026-10-08
+
+Пользователь запросил проектирование, речь и реализацию следующих пяти слайдов; во время работы уточнил канонический GitHub-репозиторий и отдельную ветку. Продолжение создано в content/slides-6-10 от dacbc14 (polish/consistency). Новые общие роли оформления и глоссарий изучены, первые пять страниц и 3a сохранены побайтово по HTML-источнику. Прежний внешний build теперь wrapper, work/slides — alias; основной проект и карта находятся здесь. Прежний delivery outputs обновляется копированием результата canonical build.
+
+Содержание: 6 — сопоставимые анализы; 7 — реальный пример 0,4/3,2=12,5%; 8 — сводный оригинал Fig. 2 и медианы; 9 — размер снижения против статистической оценки; 10 — две исходные панели Fig. 3 и зависимость распределений от включения вариантов. Все основные тексты, click cues, переходы и reserve находятся в HTML. Раскрытия пока не реализованы; необязательные 7a/9a не добавлялись.
+
+Independent INTENTION /root/narrative_fidelity_review: PASS; полностью прочитан план, narrative skill, scientific findings, актуальные README/map/builder/notes и необходимые Results/Methods, проверены оригиналы. Поправки: строки forest plot объясняются только после открытия полной Fig. 2; mean-vs100 t-test — согласующаяся интерпретация, не восстановленный расчёт; актуальная карта используется после обнаружения миграции. План и источники — slides-6-10-plan.md / source-findings.md. Новый reported-data JSON отделяет факты статьи от условного примера и синхронизирует экран/речь; оглавление/число страниц выводятся из исходных main sheets. Native figure control расширен на Figures 2–3 без изменения старого поведения.
+
+Проверка initial candidate обнаружила source-marker overflow на 8/10 и нулевую высоту легенды Fig. 3: flex сжимал отдельный медиаблок. Коррекция сохранила данные, уменьшив масштаб целых исходных панелей и интервалы; легенда получила min-height/flex-shrink=0. В consistency-check добавлена проверка положительной высоты всех медиаблоков. Не маскировали проблему уменьшением научного содержания.
+
+Build 3004058 bytes, 10main+1optional; route checker PASS main/optional/history/notes/4figurecontrols/11print/offline. Consistency PASS22light/darkviews/shared44pxheaders48/48/geometry/glossary/counters/notes/zoom/PDF. Полный PDF11pages960×540pt; пять фактических новых PDF-страниц просмотрены, а также все новые light screens и dark6/7/9. Originalfigures2/3 byte-identical; first5+3a source unchanged. Пакет не проходил репетицию/тест аудитории. Готовый кандидат далее предъявляется отдельному независимому CHANGE-review; его результат записывается отдельно от этого INTENTION.
+
+Process diagnostics: попытка GitHub get_repo с неподходящим ключом repo_full_name отвергнута до запроса; схема прочитана из точного tool declaration, repository_full_name принят. Metadata подтверждает private repository и push permission. Ни секреты, ни значения credential helpers не читались. Исторические источники/версии не удалялись.
+
+
+## PR2 consistency pass — 2026-10-08
+
+User requests establishedfive-directionstandardizationofPR2. IsolatednativeGitworktree ../presentation-pr2-polish onpolish/slides-6-10, originalcheckoutleftalone. BasePRretargetedfromalreadymergedpolish/consistencytomain; no mergeauthorized. Currentchanges sharedfigure-open/caption/textroles, E/Qandp_Texplanationatuse, matchedanalysiswording andvisual-referencecorrection. Data/originalfigures/runtimeunchanged; earlypagesremainDOMand12PNGidentical. Details in PR2-CONSISTENCY-REVIEW.
+
+Userquestionpending: sampleversusancestrygroupvocabulary. Existingtermsarepreserved; thisisnotsilentchoice. Otherindependentpolishworkcanbecommitted/publishedwhilequestionremainspending; PRstaydraft. Independentintentionandpreliminarychangereview /root/pr2_scope_review foundnoblockers; exactstagedcandidateverdictrecordedoutsidecandidateafterreply.
+
+
+Owner subsequently chose «выборка» for specificcomparison and «группа происхождения» for aggregatedAFR/SAS/EASresults. Appliedto6/7speechanddiagram andGLOSSARY. Preliminary reviewedtreef46e33ee52b569b62a0946aebd6d0b0621c90574 verdictkeptdistinct; finalcandidate reviewedseparately afterchoice. Userrequestnowhasnounresolvedterminologychoice; PRstillnotmerged.
+
+
+2026-10-08: локальная переработка слайдов 7 и 9 по утверждённым правилам речи: смысл pseudo-R² перед нормировкой, краткая интерпретация статистического результата, детали в резерве; см. NARRATIVE-7-9.md.
+
+2026-10-08: минорный проход по 1–10 и примеру 3a; подробности в NARRATIVE-POLISH.md. 1/7/9 сохранены относительно одобренного preview, основные правки — речь и дублирование пояснений.
