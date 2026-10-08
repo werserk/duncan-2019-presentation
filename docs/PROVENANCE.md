@@ -1,6 +1,6 @@
 # Материалы и восстановление истории
 
-Статья и Figures 1–3: Duncan et al., Nature Communications 10, 3328 (2019), DOI 10.1038/s41467-019-11112-0, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Скриншот заголовка предоставлен пользователем. Учебный пример содержит условные данные.
+Статья и Figures 1–4: Duncan et al., Nature Communications 10, 3328 (2019), DOI 10.1038/s41467-019-11112-0, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Скриншот заголовка предоставлен пользователем. Учебные примеры содержат условные данные.
 
 `vendor/html-slide-builder/build.py` скопирован без изменений из личного skill `html-slide-builder`; `vendor/coal-theme` — локальные снимки Coal tokens и Geist. Это ресурсы личного репозитория werserk/skills, не новое предоставление прав на сторонние материалы. Лицензия Geist: `vendor/coal-theme/fonts/OFL.txt`; сохранена полностью и включается в HTML. Исходное происхождение шрифтов записано в `fonts.css`.
 
@@ -9,3 +9,7 @@
 Начальный импорт сохраняет оформление и речь; лишь зависимости заменены на относительные локальные пути. Его outputs должны совпасть побайтово с исходной поставкой. Следующий коммит содержит отдельно проверяемую унификацию.
 
 Оригиналы Figures 2–3 добавлены из сохранённых загрузок той же статьи. Побайтовое соответствие проверено; на экране используются CSS-фрагменты, полный оригинал доступен отдельно. Значения слайдов 6–9 — из Results/Methods статьи, источник указан в presentation-source-data.json.
+
+Supplementary Information: [оригинальный PDF](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-019-11112-0/MediaObjects/41467_2019_11112_MOESM1_ESM.pdf), локально `work/sources/MOESM1_ESM.pdf`, SHA-256 `d42d0d14c02d32075a992fda88f3cb8339939b9f64beaaa162d449560f1113f4`. Скопирован из прежней сохранённой загрузки без изменения байтов. Страница 5 содержит Supplementary Figure 4. Растр `SuppFig4-page.png` получен командой `pdftoppm -f 5 -singlefile -scale-to 2200 -png work/sources/MOESM1_ESM.pdf /tmp/duncan-supp-fig4`; 2200×1700, SHA-256 `c3c1af067559695282d00b46e65f0cafbf993c205df8f08a2470dfa9ebabcc9d`. Изображение не дорисовано и не перекрашено. CSS-фрагменты Fig. 3 и Supplementary Fig. 4 на 13–15 сохраняют единый масштаб по осям; полный оригинал доступен по кнопке.
+
+Figure4: [оригинальное изображение](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-019-11112-0/MediaObjects/41467_2019_11112_Fig4_HTML.png), 1541×1477, SHA-256 `a608198dd2bfb26c20003d292dab3dcb86b1683534b220d81e2817491dc969ff`. Скопировано из прежней загрузки без изменения пикселей. Table18 переносит подписи r/p оригинала; знак EAS и источник роста обсуждаются по научному журналу source-findings, без незаметного исправления источника.
