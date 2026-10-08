@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "python3 work/build-slides.py",
-    "check": "node work/check-slides.cjs"
+    "check": "node work/check-slides.cjs",
+    "check:consistency": "node work/check-consistency.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

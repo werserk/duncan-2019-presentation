@@ -1,3 +1,5 @@
+> Исторический журнал исследования источников. Пути к ранним reading-guide и supplementary-файлам относятся к исходной папке Codex; её расположение указано в [PROVENANCE](PROVENANCE.md). Текущие исходники презентации — по [карте проекта](ARCHITECTURE.md).
+
 # Scientific source verification for Duncan et al. (2019)
 
 Checked 2026-10-07. Read-only investigation; main article from `work/article.html` and `work/article.txt`, full extracted supplementary PDF text, visual review of supplementary pages 7–8 and main Figure 2; full workbook cell contents/formulas inspected. Sources below are publication's own supplementary files or official NHGRI/PLINK definitions. No source code of the paper's analyses was available or reconstructed as fact.
