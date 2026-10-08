@@ -1,5 +1,5 @@
 {
-  "source": "Duncan et al. (2019), Results Fig. 2 and Methods Part 1",
+  "source": "Duncan et al. (2019), Results, Figures 2–3, Supplementary Figure 4 and Methods Parts 1–2",
   "matched_publications": 26,
   "purcell_2009": {
     "african_variance_explained": 0.004,
@@ -7,5 +7,13 @@
   },
   "median_relative_metrics_percent": {"AFR": 42, "SAS": 60, "EAS": 95},
   "african_reported_test": {"t": -5.97, "df": 24, "p": 0.0000037},
-  "limits": "Medians pool heterogeneous normalized metrics. Exact t-test inputs and implementation are not published in inspected materials."
+  "construction": {
+    "reported_genotype_n": 2577,
+    "ld_window_kb": 500,
+    "ld_thresholds": [0.2, 0.05, 0.01],
+    "ld_references": ["ALL", "EUR", "AFR", "AMR", "EAS", "SAS"],
+    "figure3_p_thresholds": [5e-8, 1],
+    "pc_example": {"source": "GIANT height", "early": [1, 2, 3, 4], "later": [7, 12]}
+  },
+  "limits": "Medians pool heterogeneous normalized metrics. Exact t-test inputs and implementation are not published in inspected materials. Results N2577 and Methods N1940 have an editorial ambiguity. Figure3 only displays two of the thirteen p-thresholds."
 }
