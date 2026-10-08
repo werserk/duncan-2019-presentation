@@ -1,0 +1,40 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const cp=require('node:child_process');
+(async()=>{
+ const {load}=await import('cheerio');
+ const checkpoint=JSON.parse(fs.readFileSync('docs/REVEAL-SOURCE.json','utf8')).commit;
+ const source=fs.readFileSync('work/slides/slides.html','utf8');
+ const baseline=process.argv.includes('--migration')?cp.execFileSync('git',['show',checkpoint+':work/slides/slides.html'],{encoding:'utf8'}):source;
+ const original=load(baseline),current=load(source),prepared=load(fs.readFileSync('.generated/slides.html','utf8'));
+ const normalized=s=>s.replace(/\s+/g,' ').trim();
+ const text=$=>$.root().find('.sheet').toArray().map(a=>normalized($(a).text()));
+ const speech=$=>$('template.speaker-notes').toArray().map(t=>normalized(load($(t).html()).text()));
+ assert.deepEqual(text(current),text(original),'Scientific slide text must match the incoming content checkpoint');
+ assert.deepEqual(speech(current),speech(original),'Complete speech must match the incoming content checkpoint');
+ const config=(await import(require('node:url').pathToFileURL(require('node:path').resolve('dist/config.js')).href)).default;
+ assert.deepEqual(config.slides.filter(s=>!s.parent).map(s=>s.id),Array.from({length:21},(_,i)=>'slide-'+(i+1)));
+ assert.deepEqual(config.slides.filter(s=>s.parent).map(s=>[s.id,s.parent]),[['slide-3a','slide-3'],['slide-12a','slide-12'],['slide-12b','slide-12'],['slide-15a','slide-15'],['slide-17a','slide-17']]);
+ assert.equal(config.slides.length,26);
+ const printed=load(fs.readFileSync('dist/reader.html','utf8'));
+ const markdown=normalized(fs.readFileSync('dist/speaker-notes.md','utf8'));
+ let paragraphs=0;
+ for(const slide of config.slides){
+  const template=load(prepared('#'+slide.id+' template').html());
+  const expected=template('p').toArray().map(p=>normalized(template(p).text()));
+  const actual=[...slide.notes.map(n=>normalized(load(n.html).text())),...load(slide.reserve)('p').toArray().map(p=>normalized(load(slide.reserve)(p).text()))];
+  assert.deepEqual(actual,expected,'Every paragraph preserved in '+slide.id);
+  for(let i=0;i<=slide.steps;i++)assert.ok(slide.notes.some(n=>n.step===i),'Missing speech at '+slide.id+' step '+i);
+  for(const paragraph of expected)assert.ok(markdown.includes(paragraph),'Markdown lost a paragraph in '+slide.id);
+  paragraphs+=expected.length;
+ }
+ prepared('template.speaker-notes').remove();assert.deepEqual(text(printed),text(prepared),'Full reader preserves prepared slide text');
+ const reader=fs.readFileSync('dist/reader.html','utf8');
+ for(const phrase of ['12,5','0,4','0,5','3,7 × 10⁻⁶','0,67','0,097','0,643'])assert.ok(reader.includes(phrase),phrase);
+ assert.ok(!/<!-- (?:EXAMPLE|DATA|TEACH)_/.test(reader),'Unresolved numeric placeholder');
+ const audience=load(fs.readFileSync('dist/index.html','utf8'));
+ assert.equal(audience('.speaker-notes').length,0,'Audience must not contain speech');
+ assert.ok(!audience.text().includes('Для обсуждения:'));
+ for(const id of ['figure-dialog','figure-2-dialog','figure-3-dialog','figure-supp4-dialog','figure-4-dialog'])assert.equal(audience('#'+id).length,1,'Missing original figure '+id);
+ console.log(JSON.stringify({core:21,optional:5,physical:26,speechParagraphs:paragraphs,preservation:'pass',numericPreparation:'pass',audienceNotesSeparation:'pass'}));
+})().catch(e=>{console.error(e);process.exit(1)});

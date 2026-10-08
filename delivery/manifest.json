@@ -1,0 +1,41 @@
+{
+  "archive": "presentation-offline.tar.gz",
+  "sha256": "4bc858bcb02c19498b5670ea0cedd54bbbe9d8fa7d471ab2d5beaa0563fac008",
+  "build": {
+    "buildId": "c8994b296bd84007fd10",
+    "assets": [
+      "1f77d1650acc35b1.css",
+      "a84e32ccb6abf96b.woff2",
+      "2f6cfec71f9f8ec8.woff2",
+      "05f146c56f1659e4.woff2",
+      "ead637fd0b6b887d.woff2",
+      "6145bf6706dbc1b6.woff2",
+      "edde7cc4e2719898.woff2",
+      "c3e3d9893a3de671.woff2",
+      "4c8a1cdd921e467c.woff2",
+      "3f98383b122fe015.woff2",
+      "72971bd4908d3984.woff2",
+      "70cf49fcb9257c1d.css",
+      "62b5791e0dad417e.css",
+      "f35bbf1beff25d63.css",
+      "9aaff6d33e763c62.png",
+      "b023de29c99a339d.png",
+      "fcd99a2e1ad9c9e1.png",
+      "c3c1af0675596952.png",
+      "a608198dd2bfb26c.png",
+      "749809cf72c062a6.png"
+    ]
+  },
+  "source": {
+    "commit": "ab1a119e9b60bc4810f156563d59ffe60f788ccf",
+    "core": 21,
+    "optional": [
+      "3a",
+      "12a",
+      "12b",
+      "15a",
+      "17a"
+    ],
+    "toolkitCommit": "94a6349e5007ecc1e3763f6d274674ef9349c60f"
+  }
+}
