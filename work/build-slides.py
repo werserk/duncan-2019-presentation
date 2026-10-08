@@ -35,23 +35,49 @@ values = {
     'EXAMPLE_CHANGE': f"g<sub>1B</sub>: {changed['g']} → {changed_g}. PGS: {number(score)} → <strong class=\"accent\">{number(changed_score)}</strong>.",
     'EXAMPLE_NOTE': escape('Вклад каждого SNP равен весу, умноженному на число копий выбранного аллеля. Подставляем: '+calculation+' = '+number(score)+'. При дополнительной копии у B получаем '+number(changed_score)+'.'),
 }
+reported = json.loads((ROOT/'work/presentation-source-data.json').read_text(), parse_float=Decimal)
+purcell = reported['purcell_2009']
+afr = purcell['african_variance_explained']
+eur = purcell['european_variance_explained']
+if not (0 <= afr <= 1 and 0 < eur <= 1):
+    raise ValueError('Invalid reported explained-variance inputs')
+medians = reported['median_relative_metrics_percent']
+stat = reported['african_reported_test']
+values.update({
+    'DATA_MATCHED_COUNT': str(reported['matched_publications']),
+    'DATA_PURCELL_AFR': number(afr * 100),
+    'DATA_PURCELL_EUR': number(eur * 100),
+    'DATA_PURCELL_RATIO': number(afr / eur * 100),
+    'DATA_MEDIAN_AFR': str(medians['AFR']),
+    'DATA_MEDIAN_SAS': str(medians['SAS']),
+    'DATA_MEDIAN_EAS': str(medians['EAS']),
+    'DATA_AFR_T': number(stat['t']),
+    'DATA_AFR_DF': str(stat['df']),
+    'DATA_AFR_P': number(stat['p'] / Decimal('1e-6')) + ' × 10⁻⁶',
+})
 source = SOURCE.read_text()
 for key,value in values.items():
     marker = f'<!-- {key} -->'
-    if source.count(marker) != 1:
+    if (key.startswith('EXAMPLE_') and source.count(marker) != 1) or source.count(marker) < 1:
         raise ValueError(f'Expected one placeholder: {key}')
     source = source.replace(marker,value)
-if '<!-- EXAMPLE_' in source:
+if '<!-- EXAMPLE_' in source or '<!-- DATA_' in source:
     raise ValueError('Unresolved example placeholder')
+soup = BeautifulSoup(source, 'html.parser')
+slides = soup.select('.sheet')
+main_slides = [slide for slide in slides if not slide.has_attr('data-optional')]
+nav = ''.join(f'<a href="#{escape(slide["id"])}">{escape(slide["data-folio"])}</a>' for slide in main_slides)
+if source.count('<!-- MAIN_TOC -->') != 1:
+    raise ValueError('Expected one canonical TOC placeholder')
+source = source.replace('<!-- MAIN_TOC -->', nav)
 parser = packager.Packager(SOURCE.parent)
 parser.feed(source)
 parser.close()
 page = ''.join(parser.output)
 licence = ROOT.joinpath('vendor/coal-theme/fonts/OFL.txt').read_text()
 page = page.replace('FONT_LICENSE', escape(licence))
-soup = BeautifulSoup(source, 'html.parser')
-notes = ['# Duncan et al. — первые пять слайдов и пример 3a\n']
-for slide in soup.select('.sheet'):
+notes = ['# Duncan et al. — текст спикера\n']
+for slide in slides:
     notes += [f"## {slide['data-folio']}. {slide['aria-label']}\n", f"Ориентир по времени: {slide['data-time']}.\n"]
     paragraphs = [p.get_text(' ',strip=True,types=(NavigableString,TemplateString))
                   for p in slide.select('template.speaker-notes p')]
@@ -64,4 +90,4 @@ output = ROOT/'outputs/duncan-2019-slides.html'
 notes_output = ROOT/'outputs/duncan-2019-speaker-notes.md'
 output.write_text(page)
 notes_output.write_text('\n'.join(notes))
-print(f'Built {output.name}: {output.stat().st_size} bytes; 5 main + 1 optional; speaker notes exported')
+print(f'Built {output.name}: {output.stat().st_size} bytes; {len(main_slides)} main + {len(slides) - len(main_slides)} optional; speaker notes exported')
