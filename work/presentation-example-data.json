@@ -1,0 +1,46 @@
+{
+  "provenance": "Synthetic educational examples; not author data or a replication of Duncan et al. 2019.",
+  "snps": [
+    {"id": "A", "beta": 0.2, "g": 2, "p": 1e-8},
+    {"id": "B", "beta": 0.1, "g": 1, "p": 1e-6},
+    {"id": "C", "beta": -0.05, "g": 2, "p": 0.001}
+  ],
+  "ld": {
+    "window_kb": 500,
+    "assumption": "All three SNP are within the same clumping window; AC and BC r_squared are zero; SNP A has the smallest association p-value.",
+    "reference_x_ab_r2": 0.8,
+    "reference_y_ab_r2": 0.1,
+    "cutoff": 0.2,
+    "stricter_cutoff": 0.05
+  },
+  "inclusion_thresholds": [5e-8, 0.0001, 0.01],
+  "r_squared": {
+    "kind": "Ordinary SSE/SST R_squared for a continuous toy phenotype, not an exact definition of all source studies' reported explained variance.",
+    "y": [1, 2, 3],
+    "y_hat": [1.5, 1.5, 3]
+  },
+  "t_test": {
+    "kind": "One-sample t-test on independent fictional ratios of one common metric; not reconstruction of authors' input vector.",
+    "q_a": [0.4, 0.5, 0.6, 0.7, 0.8],
+    "q_b": [0.2, 0.4, 0.6, 0.8, 1.0],
+    "null_mean": 1
+  },
+  "confounding": {
+    "kind": "Simplified adjustment by group indicator, not computed genetic PCs. Phenotype constructed to depend only on group/environment in this example.",
+    "g": [0, 1, 1, 2],
+    "y": [160, 160, 180, 180],
+    "group": [0, 0, 1, 1]
+  },
+  "aggregate_correlation": {
+    "kind": "Three fictional population aggregates, synthetic weights; illustrates change of score/correlation, not a causal explanation for real GWAS differences.",
+    "mean_g": [[0, 0], [1, 1], [2, 0]],
+    "mean_height": [160, 170, 180],
+    "weights_a": [1, 0],
+    "weights_b": [0, 1]
+  },
+  "original_normalization_example": {
+    "provenance": "Actual example reported in Duncan et al. Methods Part 1 (Purcell 2009 schizophrenia comparison).",
+    "non_european_explained_variance_percent": 0.4,
+    "european_explained_variance_percent": 3.2
+  }
+}

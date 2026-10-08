@@ -1,2 +1,23 @@
-# duncan-2019-presentation
-Russian presentation and speaker notes for Duncan et al. (2019), with reproducible offline HTML builds.
+# Duncan 2019 — презентация
+
+Русскоязычный доклад по статье [Duncan et al. (2019)](https://www.nature.com/articles/s41467-019-11112-0). Сейчас реализованы пять основных слайдов и необязательный пример 3a; полный доклад планируется на 30–40 минут.
+
+## Просмотр и сборка
+
+Откройте `outputs/duncan-2019-slides.html` в браузере. «Заметки» показывает текст спикера. HTML самодостаточен и работает без сети; внешние ссылки открываются только по запросу. PDF — через «В PDF».
+
+```bash
+python3 -m pip install -r requirements.txt
+python3 work/build-slides.py
+npm install
+npx playwright install chromium
+npm run check
+```
+
+Для системного Chromium задайте `CHROMIUM_PATH`. Сборка не зависит от установленных Codex skills. `outputs/duncan-2019-speaker-notes.md` также генерируется из HTML-источника; не редактируйте результаты сборки вручную.
+
+## Работа в ветках
+
+Основная ветка — `main`. Создавайте отдельную ветку для каждого направления: содержание, оформление или взаимодействие. Перед слиянием пересоберите outputs, проверьте просмотр и изменения. Необязательный пример не увеличивает основной счётчик страниц. Пометки кликов в речи описывают сценарий; последовательные раскрытия пока не реализованы.
+
+[Карта проекта](docs/ARCHITECTURE.md) · [История решений](docs/history.md) · [План полного доклада](docs/outline.md) · [Происхождение материалов](docs/PROVENANCE.md).

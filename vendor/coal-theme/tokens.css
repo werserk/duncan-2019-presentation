@@ -1,0 +1,45 @@
+/* Canonical Coal tokens. Legacy size tokens are UI defaults, not all-medium limits. */
+:root {
+  color-scheme: dark;
+  /* surfaces and lines: only objects get a surface (stat cards, inputs, formula box) */
+  --bg: #0f0f10;       /* page; sections sit on it */
+  --panel: #151516;    /* stat cards, inputs, formula box */
+  --panel-2: #1c1c1e;  /* hover, active nav item */
+  --line: #232325;     /* section and row rules, card borders, grid */
+  --line-2: #3a3a3d;   /* control borders, chart base line */
+  /* text: constant labels faint, dynamic content bright */
+  --faint: #7d7d80;    /* section labels, field names, IDs, times, captions */
+  --muted: #a1a1a4;    /* secondary text, icons */
+  --text: #ececec;     /* titles, numbers, primary button fill, primary series */
+  /* state; orange is both the accent and "needs the owner", as in Claude Code */
+  --need: #ff5f2e;     /* needs the owner's decision or answer */
+  --block: #f2555a;    /* blocked or failed */
+  --work: #8b95ff;     /* an agent is working on it */
+  --done: #4cc38a;     /* finished */
+  /* data */
+  --bar: #3a3a3d;      /* secondary chart series */
+  --accent: #ff5f2e;   /* the peak; on a dashboard that is the "ждёт тебя" count */
+  --oA: #ff5f2e; --oB: #8b95ff; --oC: #4cc38a;   /* comparison options */
+  --p1: #8b95ff; --p2: #4cc38a; --p3: #d4a24c; --p4: #c678dd;   /* project dots, identity only */
+  --ramp-1: #4d1d10; --ramp-2: #80301a; --ramp-3: #bf4424;
+  --ramp-4: #ff5f2e; --ramp-5: #ffa98f;         /* ordered steps, one hue */
+  /* type */
+  --f-ui: "Geist", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+  --t-xs: 12px; --t-sm: 13px; --t-md: 14px; --t-lg: 16px; --t-xl: 20px; --t-num: 32px;
+  /* space: a 4 px scale, nothing off it */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s8: 32px; --s12: 48px;
+  /* shape */
+  --r: 6px;    /* cards */
+  --r-s: 4px;  /* buttons, inputs */
+  --h: 32px;   /* every control */
+}
+
+:root[data-theme="light"], :root[data-theme="print"] {
+  color-scheme: light;
+  --bg: #ffffff; --panel: #f6f6f5; --panel-2: #ededeb; --line: #e2e2df; --line-2: #cfcfcb;
+  --faint: #6f7074; --muted: #55565a; --text: #16171a; --bar: #b9babd;
+  /* darkened to reach 4.5:1 on white */
+  --need: #c2410c; --accent: #c2410c; --block: #c62828; --work: #4f5bd5; --done: #1a7f52;
+  --oA: #c2410c; --oB: #4f5bd5; --oC: #1a7f52;
+}
