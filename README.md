@@ -9,9 +9,10 @@
 ```bash
 python3 -m pip install -r requirements.txt
 python3 work/build-slides.py
-npm install
+npm ci
 npx playwright install chromium
 npm run check
+npm run check:consistency
 ```
 
 Для системного Chromium задайте `CHROMIUM_PATH`. Сборка не зависит от установленных Codex skills. `outputs/duncan-2019-speaker-notes.md` также генерируется из HTML-источника; не редактируйте результаты сборки вручную.
@@ -20,4 +21,4 @@ npm run check
 
 Основная ветка — `main`. Создавайте отдельную ветку для каждого направления: содержание, оформление или взаимодействие. Перед слиянием пересоберите outputs, проверьте просмотр и изменения. Необязательный пример не увеличивает основной счётчик страниц. Пометки кликов в речи описывают сценарий; последовательные раскрытия пока не реализованы.
 
-[Карта проекта](docs/ARCHITECTURE.md) · [История решений](docs/history.md) · [План полного доклада](docs/outline.md) · [Происхождение материалов](docs/PROVENANCE.md).
+[Карта проекта](docs/ARCHITECTURE.md) · [Глоссарий](docs/GLOSSARY.md) · [Ревью согласованности](docs/CONSISTENCY-REVIEW.md) · [История решений](docs/history.md) · [План полного доклада](docs/outline.md) · [Происхождение материалов](docs/PROVENANCE.md).
