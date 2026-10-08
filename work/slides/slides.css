@@ -243,6 +243,17 @@ dialog a,.licensing a {color:var(--text);}
 .distribution-preview .source-marker {margin-top:8px;}
 @media(max-width:600px) {.toolbar .toc {max-width:100%;overflow-x:auto;margin-left:0;}}
 
+/* Metric meaning precedes normalization; scoped to the revised slide 7. */
+.relative-example .example-study {margin-bottom:18px;}
+.metric-explanation {border-left:var(--slide-rule) solid var(--accent);padding-left:18px;margin-bottom:22px;}
+.metric-explanation h2 {font-size:26px;line-height:1.3;margin:0 0 8px;}
+.metric-explanation p {font-size:var(--slide-text);line-height:1.3;margin:0 0 6px;}
+.relative-example .prediction-pair {margin-bottom:18px;}
+.relative-example .prediction-pair h2 {margin-bottom:10px;}
+.relative-example .relative-calculation {padding:18px 0;}
+.relative-baseline {font-size:var(--slide-caption);color:var(--muted);}
+.relative-example .metric-context {font-size:var(--slide-caption);margin-top:14px;}
+
 /* Fixed inputs and variable selection decisions lead to the distributions. */
 :is(.construction-design,.ld-mechanism,.selection-example,.threshold-example,.figure-map,.construction-results,.ancestry-adjustment,.confounding-example)>* {flex-shrink:0;}
 .construction-design .slide-title {margin-bottom:32px;}
@@ -356,3 +367,88 @@ dialog a,.licensing a {color:var(--text);}
 .confounding-models span {display:block;font-size:20px;line-height:1.2;color:var(--muted);margin-top:6px;}
 .confounding-key {font-size:21px;color:var(--muted);margin:16px 0 0;}
 .confounding-example .new-takeaway {margin-top:18px;}
+
+/* The longer main route scrolls inside the TOC, preserving the viewer controls. */
+.toolbar .toc {min-width:0;overflow-x:auto;}
+.toolbar .toc a,.toolbar button {flex-shrink:0;}
+.toolbar .name {white-space:nowrap;}
+:is(.height-preview,.height-design,.correlation-example,.height-results,.height-interpretation,.study-contribution,.research-next)>* {flex-shrink:0;}
+
+.height-preview .slide-title {margin-bottom:14px;}
+.height-question {font-size:var(--slide-text);line-height:1.35;margin:0 0 20px;}
+.height-pair {display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.height-pair figure {margin:0;text-align:center;}
+.height-pair h2 {font-size:26px;line-height:1.3;margin:0 0 12px;}
+.figure4-crop {width:326px;height:326px;margin:auto;background:white url('../sources/Fig4.png') no-repeat;background-size:1417.72px 1358.84px;}
+.height-pair figcaption {font-size:var(--slide-caption);line-height:1.3;margin-top:8px;color:var(--muted);}
+.height-giant {background-position:-318.32px -131.56px;}
+.height-ukb {background-position:-318.32px -551.08px;}
+.height-preview-bottom,.height-design-bottom,.height-results-bottom {display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:18px;}
+.height-preview-bottom p {font-size:21px;color:var(--muted);margin:0;}
+.height-preview .new-takeaway {margin-top:14px;}
+.height-preview .height-preview-bottom {margin-top:14px;}
+.height-preview .source-marker {margin-top:8px;}
+
+.height-design .slide-title {margin-bottom:24px;}
+.height-design-columns {display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.height-design-columns section:nth-child(2) {border-left:1px solid var(--line-2);padding-left:40px;}
+.height-design-columns h2 {font-size:28px;line-height:1.25;margin:0 0 18px;}
+.height-design-columns p {font-size:var(--slide-text);line-height:1.35;margin:0;}
+.flow-arrow {display:block;font-size:27px;color:var(--accent);margin:8px 0;}
+.height-design-result {display:flex;align-items:center;gap:24px;border-top:1px solid var(--line);padding-top:20px;margin-top:24px;}
+.height-design-result strong {font:500 var(--slide-metric)/1 var(--f-mono);color:var(--accent);}
+.height-design-result p {font-size:24px;line-height:1.35;margin:0;}
+.height-design-result p span {font-size:20px;color:var(--muted);}
+.height-design-bottom p {font-size:22px;line-height:1.35;margin:0;}
+
+.correlation-example .slide-title {margin-bottom:16px;}
+.correlation-layout {display:grid;grid-template-columns:620px 1fr;gap:48px;margin-top:18px;}
+.correlation-layout h2 {font-size:27px;margin:0 0 18px;}
+.correlation-layout table {font-size:25px;line-height:1.3;}
+.correlation-layout th {font-size:20px;}
+.correlation-layout th,.correlation-layout td {padding:14px 12px;}
+.correlation-layout section>p {font-size:23px;line-height:1.4;margin:20px 0 0;}
+.correlation-results {border-left:1px solid var(--line-2);padding-left:32px;}
+.correlation-results div+div {border-top:1px solid var(--line);padding-top:22px;margin-top:22px;}
+.correlation-results div p {font-size:26px;line-height:1.35;margin:0 0 10px;}
+.correlation-results strong {font:500 40px/1.2 var(--f-mono);color:var(--accent);}
+
+.height-results .slide-title {margin-bottom:16px;}
+.height-results-intro {font-size:var(--slide-text);line-height:1.35;margin:0 0 18px;}
+.height-result-table {font-size:24px;line-height:1.25;}
+.height-result-table th {font-size:21px;}
+.height-result-table th,.height-result-table td {padding:14px 16px;}
+.height-result-table td:first-child {font-size:25px;}
+.height-result-table td strong {display:block;font-size:29px;font-weight:500;}
+.height-result-table tr:first-child strong {color:var(--accent);}
+.height-result-table td span {display:block;font-size:20px;color:var(--muted);margin-top:6px;}
+.height-result-table .height-unavailable {font-size:20px;max-width:170px;}
+.height-result-reading {font-size:var(--slide-text);line-height:1.35;margin:18px 0 0;}
+.height-results-bottom p {font-size:20px;line-height:1.35;margin:0;}
+.height-results .source-marker {margin-top:10px;}
+
+.height-interpretation .slide-title {margin-bottom:28px;}
+.explanation-columns {display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.explanation-columns section:nth-child(2) {border-left:1px solid var(--line-2);padding-left:40px;}
+.explanation-columns h2 {font-size:26px;line-height:1.3;margin:0 0 20px;}
+.explanation-columns ul {list-style:none;padding:0;margin:0;}
+.explanation-columns li {font-size:var(--slide-text);line-height:1.35;margin-bottom:16px;padding-left:16px;border-left:var(--slide-rule) solid var(--accent);}
+.height-interpretation-context {border-top:1px solid var(--line);padding-top:22px;margin-top:24px;}
+.height-interpretation-context p {font-size:var(--slide-text);line-height:1.35;margin:0 0 14px;}
+.height-interpretation .new-takeaway {margin-top:12px;}
+
+.study-contribution .slide-title {margin-bottom:22px;}
+.contribution-list section {display:grid;grid-template-columns:58px 1fr 72px;gap:22px;align-items:start;padding:13px 0;border-bottom:1px solid var(--line);}
+.contribution-list section>span {font:500 28px/1.2 var(--f-mono);color:var(--accent);}
+.contribution-list h2 {font-size:26px;line-height:1.25;margin:0 0 8px;}
+.contribution-list p {font-size:22px;line-height:1.35;margin:0;}
+.contribution-list small {font-size:var(--slide-caption);color:var(--muted);margin-top:6px;}
+.study-contribution .new-takeaway {margin-top:18px;}
+.study-contribution .source-marker {margin-top:10px;}
+
+.research-next .slide-title {margin-bottom:32px;}
+.research-next-head {display:grid;grid-template-columns:1fr 1fr;gap:64px;font-size:20px;color:var(--muted);margin-bottom:12px;}
+.research-next-rows section {display:grid;grid-template-columns:1fr 32px 1fr;gap:20px;align-items:center;border-top:1px solid var(--line);padding:22px 0;}
+.research-next-rows p {font-size:var(--slide-text);line-height:1.35;margin:0;}
+.research-next-rows section>span {color:var(--accent);font-size:28px;}
+.closing-statement {font-size:30px;line-height:1.3;margin:28px 0 0;}

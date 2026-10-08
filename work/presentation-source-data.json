@@ -5,15 +5,98 @@
     "african_variance_explained": 0.004,
     "european_variance_explained": 0.032
   },
-  "median_relative_metrics_percent": {"AFR": 42, "SAS": 60, "EAS": 95},
-  "african_reported_test": {"t": -5.97, "df": 24, "p": 0.0000037},
+  "median_relative_metrics_percent": {
+    "AFR": 42,
+    "SAS": 60,
+    "EAS": 95
+  },
+  "african_reported_test": {
+    "t": -5.97,
+    "df": 24,
+    "p": 3.7e-06
+  },
   "construction": {
     "reported_genotype_n": 2577,
     "ld_window_kb": 500,
-    "ld_thresholds": [0.2, 0.05, 0.01],
-    "ld_references": ["ALL", "EUR", "AFR", "AMR", "EAS", "SAS"],
-    "figure3_p_thresholds": [5e-8, 1],
-    "pc_example": {"source": "GIANT height", "early": [1, 2, 3, 4], "later": [7, 12]}
+    "ld_thresholds": [
+      0.2,
+      0.05,
+      0.01
+    ],
+    "ld_references": [
+      "ALL",
+      "EUR",
+      "AFR",
+      "AMR",
+      "EAS",
+      "SAS"
+    ],
+    "figure3_p_thresholds": [
+      5e-08,
+      1
+    ],
+    "pc_example": {
+      "source": "GIANT height",
+      "early": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "later": [
+        7,
+        12
+      ]
+    }
   },
-  "limits": "Medians pool heterogeneous normalized metrics. Exact t-test inputs and implementation are not published in inspected materials. Results N2577 and Methods N1940 have an editorial ambiguity. Figure3 only displays two of the thirteen p-thresholds."
+  "limits": "Medians pool heterogeneous normalized metrics. Exact t-test inputs and implementation are not published in inspected materials. Results N2577 and Methods N1940 have an editorial ambiguity. Figure3 only displays two of the thirteen p-thresholds.",
+  "height": {
+    "participants_after_exclusions": 1940,
+    "population_aggregates": 19,
+    "unique_countries": 15,
+    "thresholds": [
+      5e-08,
+      0.001,
+      1
+    ],
+    "GIANT": [
+      {
+        "r": 0.67,
+        "p": 0.002
+      },
+      {
+        "r": 0.69,
+        "p": 0.001
+      },
+      {
+        "r": 0.59,
+        "p": 0.008
+      }
+    ],
+    "UKB": [
+      {
+        "r": 0.39,
+        "p": 0.097
+      },
+      {
+        "r": 0.1,
+        "p": 0.677
+      },
+      {
+        "r": 0.27,
+        "p": 0.255
+      }
+    ],
+    "EAS": [
+      {
+        "r_text": -0.11,
+        "r_figure": 0.11,
+        "p": 0.643
+      },
+      null,
+      null
+    ],
+    "eas_loci_reported": 17,
+    "source": "Figure4 original labels; Results; Methods; SupplementaryTable1. Text/figure disagree on EAS sign, figure caption disagrees with Methods on height source."
+  }
 }

@@ -44,7 +44,7 @@ values = {
     'EXAMPLE_SUBSTITUTION': escape(calculation) + '<br>= ' + escape(subtotals),
     'EXAMPLE_RESULT': number(score),
     'EXAMPLE_CHANGE': f"g<sub>1B</sub>: {changed['g']} → {changed_g}. PGS: {number(score)} → <strong class=\"accent\">{number(changed_score)}</strong>.",
-    'EXAMPLE_NOTE': escape('Вклад каждого SNP равен весу, умноженному на число копий выбранного аллеля. Подставляем: '+calculation+' = '+number(score)+'. При дополнительной копии у B получаем '+number(changed_score)+'.'),
+    'EXAMPLE_NOTE': escape('Вклад каждого SNP равен весу, умноженному на число копий выбранного аллеля. Подставляем: '+calculation+' = '+number(score)+'.'),
 }
 reported = json.loads((ROOT/'work/presentation-source-data.json').read_text(), parse_float=Decimal)
 purcell = reported['purcell_2009']
@@ -169,6 +169,49 @@ values.update({
     'TEACH_OLS_CROSS': number(cross), 'TEACH_OLS_GSS': number(gss),
 })
 source = SOURCE.read_text()
+height = reported['height']
+values.update({
+    'DATA_HEIGHT_PARTICIPANTS': str(height['participants_after_exclusions']),
+    'DATA_HEIGHT_POPULATIONS': str(height['population_aggregates']),
+    'DATA_HEIGHT_COUNTRIES': str(height['unique_countries']),
+    'DATA_HEIGHT_GIANT_R': number(height['GIANT'][0]['r']),
+    'DATA_HEIGHT_GIANT_P': number(height['GIANT'][0]['p']),
+    'DATA_HEIGHT_GIANT_ALL_R': number(height['GIANT'][2]['r']),
+    'DATA_HEIGHT_UKB_R': number(height['UKB'][0]['r']),
+    'DATA_HEIGHT_UKB_P': number(height['UKB'][0]['p']),
+    'DATA_HEIGHT_UKB_MID_R': number(height['UKB'][1]['r']),
+    'DATA_HEIGHT_UKB_ALL_R': number(height['UKB'][2]['r']),
+    'DATA_HEIGHT_EAS_ABS_R': number(abs(height['EAS'][0]['r_text'])),
+    'DATA_HEIGHT_EAS_LOCI': str(height['eas_loci_reported']),
+})
+height_rows = []
+for key, label in [('GIANT','GIANT'), ('UKB','UK Biobank'), ('EAS','East Asian')]:
+    cells = [label]
+    for result in height[key]:
+        if result is None:
+            cells.append('<span class="height-unavailable">Нет доступных весов</span>')
+        else:
+            r = abs(result['r_text']) if key == 'EAS' else result['r']
+            name = '|r|' if key == 'EAS' else 'r'
+            cells.append(f'<strong>{name} = {number(r)}</strong><span>p = {number(result["p"])}</span>')
+    height_rows.append(table_row(cells))
+values['DATA_HEIGHT_RESULT_ROWS'] = ''.join(height_rows)
+
+aggregate = inputs['aggregate_correlation']
+means = [[Decimal(x) for x in row] for row in aggregate['mean_g']]
+heights = list(map(Decimal,aggregate['mean_height']))
+values['TEACH_AGGREGATE_ROWS'] = ''.join(table_row([i,number(row[0]),number(row[1]),number(y)]) for i,(row,y) in enumerate(zip(means,heights),1))
+for key in ['A','B']:
+    weights = list(map(Decimal,aggregate['weights_'+key.lower()]))
+    x = [sum(a*b for a,b in zip(row,weights)) for row in means]
+    mx,my = sum(x)/len(x),sum(heights)/len(heights)
+    cross = sum((a-mx)*(b-my) for a,b in zip(x,heights))
+    denominator = (sum((a-mx)**2 for a in x)*sum((b-my)**2 for b in heights)).sqrt()
+    if not denominator:
+        raise ValueError('Aggregate example needs nonconstant values')
+    values['TEACH_AGG_WEIGHTS_'+key] = '; '.join(number(w) for w in weights)
+    values['TEACH_AGG_SCORES_'+key] = '; '.join(number(a) for a in x)
+    values['TEACH_AGG_R_'+key] = number(cross/denominator)
 for key,value in values.items():
     marker = f'<!-- {key} -->'
     if (key.startswith('EXAMPLE_') and source.count(marker) != 1) or source.count(marker) < 1:
