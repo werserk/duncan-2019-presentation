@@ -162,3 +162,13 @@ Independent INTENTION /root/narrative_fidelity_review: PASS; полностью 
 Build 3004058 bytes, 10main+1optional; route checker PASS main/optional/history/notes/4figurecontrols/11print/offline. Consistency PASS22light/darkviews/shared44pxheaders48/48/geometry/glossary/counters/notes/zoom/PDF. Полный PDF11pages960×540pt; пять фактических новых PDF-страниц просмотрены, а также все новые light screens и dark6/7/9. Originalfigures2/3 byte-identical; first5+3a source unchanged. Пакет не проходил репетицию/тест аудитории. Готовый кандидат далее предъявляется отдельному независимому CHANGE-review; его результат записывается отдельно от этого INTENTION.
 
 Process diagnostics: попытка GitHub get_repo с неподходящим ключом repo_full_name отвергнута до запроса; схема прочитана из точного tool declaration, repository_full_name принят. Metadata подтверждает private repository и push permission. Ни секреты, ни значения credential helpers не читались. Исторические источники/версии не удалялись.
+
+
+## PR2 consistency pass — 2026-10-08
+
+User requests establishedfive-directionstandardizationofPR2. IsolatednativeGitworktree ../presentation-pr2-polish onpolish/slides-6-10, originalcheckoutleftalone. BasePRretargetedfromalreadymergedpolish/consistencytomain; no mergeauthorized. Currentchanges sharedfigure-open/caption/textroles, E/Qandp_Texplanationatuse, matchedanalysiswording andvisual-referencecorrection. Data/originalfigures/runtimeunchanged; earlypagesremainDOMand12PNGidentical. Details in PR2-CONSISTENCY-REVIEW.
+
+Userquestionpending: sampleversusancestrygroupvocabulary. Existingtermsarepreserved; thisisnotsilentchoice. Otherindependentpolishworkcanbecommitted/publishedwhilequestionremainspending; PRstaydraft. Independentintentionandpreliminarychangereview /root/pr2_scope_review foundnoblockers; exactstagedcandidateverdictrecordedoutsidecandidateafterreply.
+
+
+Owner subsequently chose «выборка» for specificcomparison and «группа происхождения» for aggregatedAFR/SAS/EASresults. Appliedto6/7speechanddiagram andGLOSSARY. Preliminary reviewedtreef46e33ee52b569b62a0946aebd6d0b0621c90574 verdictkeptdistinct; finalcandidate reviewedseparately afterchoice. Userrequestnowhasnounresolvedterminologychoice; PRstillnotmerged.
