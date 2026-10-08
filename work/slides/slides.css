@@ -242,3 +242,117 @@ dialog a,.licensing a {color:var(--text);}
 .distribution-preview .new-takeaway {margin-top:16px;}
 .distribution-preview .source-marker {margin-top:8px;}
 @media(max-width:600px) {.toolbar .toc {max-width:100%;overflow-x:auto;margin-left:0;}}
+
+/* Fixed inputs and variable selection decisions lead to the distributions. */
+:is(.construction-design,.ld-mechanism,.selection-example,.threshold-example,.figure-map,.construction-results,.ancestry-adjustment,.confounding-example)>* {flex-shrink:0;}
+.construction-design .slide-title {margin-bottom:32px;}
+.design-inputs {display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.design-inputs h2 {font-size:28px;margin:0 0 12px;}
+.design-inputs p {font-size:24px;line-height:1.35;color:var(--muted);margin:0;}
+.design-experiment {margin-top:32px;padding-top:24px;border-top:1px solid var(--line);}
+.design-experiment h2 {font-size:27px;margin:0 0 18px;}
+.design-settings {display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+.design-settings p {margin:0;padding-left:16px;border-left:var(--slide-rule) solid var(--accent);}
+.design-settings strong {display:block;font-size:25px;}
+.design-settings span {display:block;font-size:21px;line-height:1.3;margin-top:8px;color:var(--muted);}
+.design-flow {display:grid;grid-template-columns:180px 44px 1fr 44px 1fr;gap:20px;align-items:center;margin-top:34px;padding-top:24px;border-top:1px solid var(--line);}
+.design-flow h3 {font-size:25px;margin:0 0 10px;font-weight:500;}
+.design-flow p {font-size:21px;line-height:1.3;margin:0;color:var(--muted);}
+.design-flow >span {font-size:32px;color:var(--accent);}
+
+/* One local LD selection, with the source of LD explained at its use. */
+.ld-mechanism .slide-title {margin-bottom:20px;}
+.ld-definition {font-size:var(--slide-text);line-height:1.35;margin:0 0 28px;padding:10px 0 10px 18px;border-left:var(--slide-rule) solid var(--accent);}
+.ld-window {border-top:1px solid var(--line-2);text-align:center;font-size:19px;color:var(--muted);margin:0 0 20px;padding-top:12px;}
+.ld-candidates {display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;}
+.ld-candidates strong {display:inline-block;font:500 var(--slide-metric)/1 var(--f-mono);color:var(--accent);position:relative;}
+.ld-candidates .excluded strong::after {content:"";position:absolute;left:-8px;right:-8px;top:50%;height:2px;background:var(--text);transform:rotate(-40deg);}
+.ld-candidates p {font-size:var(--slide-text);line-height:1.3;margin:16px 0 8px;}
+.ld-candidates span {font-size:20px;color:var(--muted);}
+.ld-reference {margin-top:30px;padding-top:22px;border-top:1px solid var(--line);display:grid;grid-template-columns:290px 1fr;gap:24px;}
+.ld-reference h2 {font-size:26px;margin:0;}
+.ld-reference p {font-size:var(--slide-text);line-height:1.4;margin:0;}
+.method-bottom {display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:28px;}
+.method-bottom p {font-size:20px;line-height:1.35;margin:0;color:var(--muted);}
+.example-links {display:flex;gap:12px;}
+
+/* Numeric selection examples share inputs, with no extra required-route step. */
+.selection-example .slide-title,.threshold-example .slide-title,.confounding-example .slide-title {margin-bottom:16px;}
+.selection-inputs {display:grid;grid-template-columns:780px 1fr;gap:32px;align-items:center;margin-bottom:24px;}
+.compact-table {font-size:23px;line-height:1.25;}
+.selection-inputs sup,.threshold-results sup,.threshold-example-context sup {line-height:0;}
+.compact-table th {font-size:19px;}
+.compact-table th,.compact-table td {padding:9px 14px;}
+.selection-inputs >p {font-size:21px;line-height:1.5;margin:0;color:var(--muted);}
+.selection-results {font-size:24px;line-height:1.25;}
+.selection-results th {font-size:20px;}
+.selection-results th,.selection-results td {padding:12px 14px;}
+.selection-results strong,.threshold-results strong {color:var(--accent);font-weight:500;}
+.selection-example .new-takeaway {margin-top:22px;font-size:24px;}
+.threshold-example-context {font-size:22px;line-height:1.35;margin:0 0 22px;}
+.threshold-results {font-size:29px;line-height:1.25;}
+.threshold-results th {font-size:22px;}
+.threshold-results th,.threshold-results td {padding:12px 16px;}
+.threshold-meaning {margin-top:18px;}
+.threshold-meaning p {font-size:24px;line-height:1.35;margin:0 0 6px;}
+.threshold-example .new-takeaway {margin-top:16px;font-size:24px;}
+
+/* Figure map: keep original proportions; give the reader a comparison method. */
+.figure-map .slide-title {margin-bottom:16px;}
+.figure-map-layout {display:grid;grid-template-columns:520px 1fr;gap:48px;}
+.figure3-half {width:520px;height:507px;background:white url('../sources/Fig3.png') no-repeat 0 -100px;background-size:1018.64px 631.12px;}
+.figure-map-key section {margin:0 0 22px;}
+.figure-map-key h2 {font-size:26px;margin:0 0 10px;}
+.figure-map-key p {font-size:var(--slide-text);line-height:1.35;margin:0;}
+.figure-map-key .map-explanation {font-size:20px;color:var(--muted);margin-top:6px;}
+.figure-map-key .map-combinations {display:flex;gap:22px;align-items:center;margin-top:28px;}
+.map-combinations strong {font:500 var(--slide-metric)/1 var(--f-mono);color:var(--accent);}
+.figure-map-key .map-reading {font-size:22px;line-height:1.4;padding-top:18px;border-top:1px solid var(--line);}
+.figure-map .source-marker {margin-top:8px;}
+
+/* Two controlled panel pairs; the evidence varies, not the page template. */
+.construction-results .slide-title {margin-bottom:20px;}
+.comparison-band {display:grid;grid-template-columns:1fr 656px;gap:24px;align-items:center;margin-bottom:20px;}
+.comparison-band h2 {font-size:26px;line-height:1.3;margin:0 0 12px;}
+.comparison-band section p {font-size:var(--slide-text);line-height:1.35;margin:0 0 12px;}
+.comparison-band section >span {font-size:19px;color:var(--muted);}
+.panel-pair {display:grid;grid-template-columns:320px 320px;gap:16px;}
+.panel-pair figure {margin:0;}
+.panel-pair figcaption {font-size:var(--slide-caption);margin:0 0 8px;}
+.figure3-detail {width:320px;height:160px;background:white url('../sources/Fig3.png') no-repeat;background-size:2273.75px 1408.75px;}
+.result-all-loose {background-position:-1295px -305px;}
+.result-all-tight {background-position:-1957.5px -305px;}
+.result-eas-loose {background-position:-1295px -1010px;}
+.construction-results .figure3-legend {margin-top:0;}
+.results-bottom,.pc-bottom {display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:18px;}
+.results-bottom p,.pc-bottom p {font-size:24px;line-height:1.35;margin:0;}
+.construction-results .source-marker {margin-top:10px;}
+
+/* One supplementary result motivates ancestry adjustment, with source switch explicit. */
+.ancestry-adjustment .slide-title {margin-bottom:16px;}
+.pc-definition {font-size:var(--slide-text);line-height:1.35;padding-left:18px;border-left:var(--slide-rule) solid var(--accent);margin:0 0 18px;}
+.pc-layout {display:grid;grid-template-columns:640px 1fr;gap:44px;}
+.pc-layout figure h2 {font-size:23px;line-height:1.3;margin:0 0 10px;}
+.pc-original {width:640px;height:320px;background:white url('../sources/SuppFig4-page.png') no-repeat -202.5px -150px;background-size:1650px 1275px;}
+.pc-chart-key {font-size:18px;line-height:1.35;margin:12px 0 0;color:var(--muted);}
+.pc-findings h2 {font-size:25px;line-height:1.3;margin:0 0 18px;}
+.pc-findings strong {font:500 34px/1.15 var(--f-mono);color:var(--accent);}
+.pc-findings section p {font-size:22px;line-height:1.3;margin:8px 0 20px;}
+.pc-findings .pc-thresholds {font-size:24px;line-height:1.35;border-top:1px solid var(--line);padding-top:18px;margin:24px 0 0;}
+.pc-bottom {margin-top:18px;}
+.ancestry-adjustment .source-marker {margin-top:10px;}
+
+/* Confounding example compares two models on the same four observations. */
+.confounding-assumption {font-size:24px;line-height:1.35;margin:6px 0 22px;}
+.confounding-layout {display:grid;grid-template-columns:600px 1fr;gap:48px;}
+.confounding-table {font-size:25px;line-height:1.25;}
+.confounding-table th {font-size:20px;}
+.confounding-table th,.confounding-table td {padding:12px 12px;}
+.confounding-models {border-left:1px solid var(--line-2);padding-left:32px;}
+.confounding-models section+section {border-top:1px solid var(--line);padding-top:16px;margin-top:18px;}
+.confounding-models h2 {font-size:25px;line-height:1.25;margin:0 0 8px;}
+.confounding-models p {font:400 25px/1.2 var(--f-mono);margin:0 0 10px;}
+.confounding-models strong {display:block;font:500 36px/1.1 var(--f-mono);color:var(--accent);}
+.confounding-models span {display:block;font-size:20px;line-height:1.2;color:var(--muted);margin-top:6px;}
+.confounding-key {font-size:21px;color:var(--muted);margin:16px 0 0;}
+.confounding-example .new-takeaway {margin-top:18px;}

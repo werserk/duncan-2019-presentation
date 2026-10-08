@@ -12,7 +12,8 @@ fs.mkdirSync('checks/route',{recursive:true});
  page.on('request',r=>{if(!r.url().startsWith('data:')&&r.url()!==pathToFileURL(file).href) requests.push(r.url());});
  try {
   await page.goto(pathToFileURL(file).href); await page.evaluate(()=>document.fonts.ready);
-  assert.equal(await page.locator('.sheet').count(),11); assert.equal(await page.locator('.sheet:not([data-optional])').count(),10);
+  assert.equal(await page.locator('.sheet').count(),19); assert.equal(await page.locator('.sheet:not([data-optional])').count(),15);
+  assert.deepEqual(await page.locator('.toc a').evaluateAll(items=>items.map(a=>a.hash)),Array.from({length:15},(_,i)=>`#slide-${i+1}`));
   await page.locator('#notes').click();
   await page.locator('.toc a[href="#slide-3"]').click();
   assert.match(await page.locator('#notes-body').innerText(),/нормиров/);
@@ -44,7 +45,7 @@ fs.mkdirSync('checks/route',{recursive:true});
   assert.equal(await page.locator('#next').isDisabled(),false);
   await page.locator('.viewport').focus(); await page.keyboard.press('ArrowRight');
   assert.equal(await page.locator('.sheet.active').getAttribute('id'),'slide-6');
-  for (const [id,dialog,width] of [['slide-8','figure-2-dialog',1771],['slide-10','figure-3-dialog',1819]]) {
+  for (const [id,dialog,width] of [['slide-8','figure-2-dialog',1771],['slide-10','figure-3-dialog',1819],['slide-13','figure-3-dialog',1819],['slide-14','figure-3-dialog',1819],['slide-15','figure-supp4-dialog',2200]]) {
    await page.locator(`.toc a[href="#${id}"]`).click();
    await page.locator(`#${id} .figure-open`).click();
    assert(await page.locator(`#${dialog}`).isVisible());
@@ -55,8 +56,34 @@ fs.mkdirSync('checks/route',{recursive:true});
    assert.equal(await page.evaluate(()=>document.activeElement.closest('article').id),id);
   }
   assert.equal(await page.locator('#next').isDisabled(),true);
+  for (const [id,parent,next] of [['slide-12a','slide-12','slide-13'],['slide-12b','slide-12','slide-13'],['slide-15a','slide-15',null]]) {
+   await page.locator(`.toc a[href="#${parent}"]`).click();
+   await page.locator(`#${parent} a[href="#${id}"]`).click();
+   await page.waitForFunction(wanted=>document.querySelector('.sheet.active').id===wanted,id);
+   assert.match(await page.locator('#notes-title').innerText(),new RegExp('^'+id.replace('slide-','')));
+   assert.match(await page.locator('#notes-body').innerText(),/условн/);
+   assert.equal(await page.locator('#next').isDisabled(),!next);
+   if (next) {
+    await page.locator(`#${id} a[href="#${next}"]`).click();
+    assert.equal(await page.locator('.sheet.active').getAttribute('id'),next);
+    await page.goBack();
+    assert.equal(await page.locator('.sheet.active').getAttribute('id'),id);
+   }
+   await page.locator('#previous').click();
+   assert.equal(await page.locator('.sheet.active').getAttribute('id'),parent);
+   await page.goto(pathToFileURL(file).href+'#'+id);
+   assert.equal(await page.locator('.sheet.active').getAttribute('id'),id);
+   await page.locator('.viewport').focus(); await page.keyboard.press('ArrowLeft');
+   assert.equal(await page.locator('.sheet.active').getAttribute('id'),parent);
+   await page.locator('.viewport').focus(); await page.keyboard.press('ArrowRight');
+   assert.equal(await page.locator('.sheet.active').getAttribute('id'),next||parent);
+  }
+  assert.deepEqual(await page.locator('#slide-12a .selection-results tbody tr').allTextContents(),['X0,80,2A, C0,3','Y0,10,2A, B, C0,4','Y0,10,05A, C0,3']);
+  assert.deepEqual(await page.locator('#slide-12b .threshold-results tbody tr strong').allTextContents(),['0,4','0,5','0,4']);
+  assert.deepEqual(await page.locator('#slide-15a .confounding-models strong').allTextContents(),['β = 10','β = 0']);
+  await page.locator('.toc a[href="#slide-15"]').click();
   await page.locator('#notes').click();
-  await page.screenshot({path:'checks/route/slide-5-full.png'});
+  await page.screenshot({path:'checks/route/last-main-slide.png'});
   await page.goto(pathToFileURL(file).href+'#slide-3a');
   assert.equal(await page.locator('.sheet.active').getAttribute('id'),'slide-3a');
   await page.locator('#notes').click();
@@ -65,11 +92,12 @@ fs.mkdirSync('checks/route',{recursive:true});
   await page.setViewportSize({width:400,height:900});
   await page.screenshot({path:'checks/route/notes-mobile.png'});
   await page.emulateMedia({media:'print'});
-  assert.equal(await page.locator('.sheet:visible').count(),11); assert(!(await page.locator('#speaker-notes').isVisible()));
+  assert.equal(await page.locator('.sheet:visible').count(),19); assert(!(await page.locator('#speaker-notes').isVisible()));
   const notes=fs.readFileSync('outputs/duncan-2019-speaker-notes.md','utf8');
-  assert.match(notes,/## 3a\./); assert.match(notes,/767/); assert.match(notes,/0,5/); assert(!notes.includes('EXAMPLE_'));
+  assert.match(notes,/## 3a\./); assert.match(notes,/## 12a\./); assert.match(notes,/## 12b\./); assert.match(notes,/## 15a\./);
+  assert.match(notes,/767/); assert.match(notes,/0,5/); assert(!/EXAMPLE_|TEACH_|DATA_/.test(notes));
   assert.deepEqual(errors,[]); assert.deepEqual(requests,[]);
-  fs.writeFileSync('checks/route/custom.json',JSON.stringify({core:10,optional:1,branch:true,notes:true,figureTriggers:4,history:true,directHash:true,print:11,errors,requests},null,2));
-  console.log('PASS: 10 core + optional3a; example/return/continue/history/hash; notes; 4 figure triggers; 11 print pages; offline');
+  fs.writeFileSync('checks/route/custom.json',JSON.stringify({core:15,optional:4,branch:true,notes:true,figureTriggers:7,history:true,directHash:true,print:19,errors,requests},null,2));
+  console.log('PASS: 15 core + 4 optional; all branches/return/continue/history/hash; computed examples; notes; 7 figure triggers; 19 print pages; offline');
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});

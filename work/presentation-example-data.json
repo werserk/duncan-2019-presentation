@@ -8,6 +8,7 @@
   "ld": {
     "window_kb": 500,
     "assumption": "All three SNP are within the same clumping window; AC and BC r_squared are zero; SNP A has the smallest association p-value.",
+    "unlinked_r2": 0,
     "reference_x_ab_r2": 0.8,
     "reference_y_ab_r2": 0.1,
     "cutoff": 0.2,
